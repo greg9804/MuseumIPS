@@ -1,6 +1,6 @@
 import sys
 
-from UI.login import Ui_LoginForm
+from UI.login import UiLoginForm
 from PyQt5.QtWidgets import QApplication, QWidget
 
 

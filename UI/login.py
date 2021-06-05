@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_LoginForm(object):
+class UiLoginForm(object):
     def setupUi(self, LoginForm):
         LoginForm.setObjectName("LoginForm")
         LoginForm.resize(400, 300)
