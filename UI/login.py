@@ -41,4 +41,3 @@ class Ui_LoginForm(object):
         self.userLoginBtn.setText(_translate("LoginForm", "Как Пользователь"))
         self.workerLoginBtn.setText(_translate("LoginForm", "Как Работник музея"))
         self.label.setText(_translate("LoginForm", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Добро пожаловать!</span></p><p align=\"center\"><span style=\" font-size:14pt;\">Как войти в систему?</span></p></body></html>"))
-
