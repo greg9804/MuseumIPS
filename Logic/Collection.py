@@ -24,7 +24,7 @@ class Collection:
         print(self.db.getAutors())
 
     def loadExponats(self):
-        pass
+        print(self.db.getExponats())
 
     def printCollection(self):
         for key, value in self.collection:
