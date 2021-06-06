@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>921</width>
+    <height>465</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ИПС учета коллекции музея</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>901</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>4</number>
+       </property>
+       <widget class="QWidget" name="searchTab">
+        <attribute name="title">
+         <string>Поиск экспонатов</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="diagrammaTab">
+        <attribute name="title">
+         <string>Построение диаграммы</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="statTab">
+        <attribute name="title">
+         <string>Статистика</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="expoTab">
+        <attribute name="title">
+         <string>Экспорт/импорт экспонатов</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="editTab">
+        <attribute name="title">
+         <string>Редактирование БД</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
