@@ -14,10 +14,10 @@ class Exponat:
     o	примечание
 
     """
-    def __init__(self, id, name, autor_id, type, style, year, place, data_in, admission, demo, note):
+    def __init__(self, id, name, autor, type, style, year, place, data_in, admission, demo, note):
         self.id = id
         self.name = name
-        self.autor_id = autor_id
+        self.autor = autor
         self.type = type
         self.style = style
         self.year = year
@@ -26,3 +26,6 @@ class Exponat:
         self.admission = admission
         self.demo = demo
         self.note = note
+
+    def __str__(self):
+        return f"{self.id} {self.name} {self.autor} {self.type} {self.style} {self.year} {self.place} {self.data_in} {self.admission} {self.demo} {self.note}"
