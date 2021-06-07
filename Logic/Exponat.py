@@ -28,4 +28,4 @@ class Exponat:
         self.note = note
 
     def __str__(self):
-        return f"{self.id} {self.name} {self.autor} {self.type} {self.style} {self.year} {self.place} {self.data_in} {self.admission} {self.demo} {self.note}"
+        return f"{self.id} {self.name} //{self.autor}// {self.type} {self.style} {self.year} {self.place} {self.data_in} {self.admission} {self.demo} {self.note}"
