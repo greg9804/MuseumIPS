@@ -1,3 +1,5 @@
+from PySide6.QtCore import QDate
+
 from DB.db import DB
 from Logic.Autor import Autor
 from Logic.Exponat import Exponat
@@ -20,7 +22,8 @@ class Collection:
         self.autorsList = self.db.getTableWithName('autors')
         self.exponatsList = self.db.getTableWithName('exponats')
         self.parse()
-        self.print()
+        self.createCollection()
+        self.printCollection()
 
     def parse(self):
         self.parseAutors(self.autorsList)
@@ -50,8 +53,18 @@ class Collection:
         for t in tuples:
             id = t[0]
             fullname = t[1]
-            birthday = t[2]
-            deathday = t[3]
+
+            y, m, d = int(t[2].split("-")[0]), int(t[2].split("-")[1]), int(t[2].split("-")[2])
+            birthdate = QDate()
+            birthdate.setDate(y, m, d)
+            birthday = birthdate
+
+
+            y, m, d = int(t[3].split("-")[0]), int(t[3].split("-")[1]), int(t[3].split("-")[2])
+            deathdate = QDate()
+            deathdate.setDate(y, m, d)
+            deathday = birthdate
+
             years = t[4]
             country = self.takeValueFromRefById(t[5], self.countriesList)
             self.Autors.append(Autor(id, fullname, birthday, deathday, years, country))
@@ -65,27 +78,37 @@ class Collection:
             style = self.takeValueFromRefById(t[4], self.stylesList)
             year = t[5]
             place = t[6]
-            datein = t[7]
+
+            y, m, d = int(t[7].split("-")[0]), int(t[7].split("-")[1]), int(t[7].split("-")[2])
+            dt = QDate()
+            dt.setDate(y, m, d)
+            datein = dt
+
             admission = self.takeValueFromRefById(t[8], self.admissionsList)
             demo = self.takeValueFromRefById(t[9], self.demosList)
             note = t[10]
             self.Exponats.append(Exponat(id, name, avtor, type, style, year, place, datein, admission, demo, note))
 
-    def addAutor(self, autor):
-        if autor not in self.collection:
-            self.collection[autor] = []
-
-    def addExpo(self, autor, expo):
-        itms = list(self.collection[autor])
-        itms.append(expo)
-        self.collection[autor] = itms
-
-    def loadAutors(self):
-        print(self.db.getAutors())
-
-    def loadExponats(self):
-        print(self.db.getExponats())
+    def createCollection(self):
+        for e in self.Exponats:
+            autor = e.autor
+            if autor in self.collection:
+                s = set(self.collection.get(autor))
+                s.add(e)
+                self.collection[autor] = s
+            elif autor not in self.collection:
+                s = set()
+                s.add(e)
+                self.collection[autor] = s
 
     def printCollection(self):
-        for key, value in self.collection:
-            print(key, value)
+        for pair in self.collection.items():
+            print('Для %s' % (pair[0]))
+            for s in pair[1]:
+                print(s)
+
+    def getCountriesForCB(self):
+        lst = []
+        for c in self.countriesList:
+            lst.append(c[1])
+        return lst
