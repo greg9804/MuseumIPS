@@ -43,51 +43,23 @@
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="9" column="0" colspan="3">
-           <widget class="QTableView" name="tableView"/>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Дата поступления (до):</string>
+            </property>
+           </widget>
           </item>
-          <item row="7" column="2">
-           <widget class="QDateEdit" name="dateEdit_4"/>
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
-          <item row="7" column="1">
-           <widget class="QCheckBox" name="checkBox_7">
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="checkBox">
             <property name="text">
              <string/>
             </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="checkBox_5">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Год создания (от):</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <widget class="QPushButton" name="clearButton1">
-            <property name="text">
-             <string>Сброс</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="checkBox_2">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QCheckBox" name="checkBox_6">
-            <property name="text">
-             <string/>
+            <property name="checked">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -98,37 +70,6 @@
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Дата поступления (от):</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Место создания:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>Год создания (до):</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLineEdit" name="lineEdit"/>
-          </item>
-          <item row="7" column="0">
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>Дата поступления (до):</string>
-            </property>
-           </widget>
-          </item>
           <item row="8" column="2">
            <widget class="QPushButton" name="findPushButton">
             <property name="text">
@@ -136,12 +77,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Название:</string>
-            </property>
-           </widget>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="lineEdit_2"/>
           </item>
           <item row="0" column="0" colspan="3">
            <widget class="QLabel" name="label">
@@ -150,23 +87,54 @@
             </property>
            </widget>
           </item>
-          <item row="6" column="2">
-           <widget class="QDateEdit" name="dateEdit_3"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_4">
+          <item row="8" column="0">
+           <widget class="QPushButton" name="clearButton1">
             <property name="text">
-             <string>Примечание:</string>
+             <string>Сброс</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="2">
-           <widget class="QLineEdit" name="lineEdit_2"/>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Год создания (от):</string>
+            </property>
+           </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="checkBox_3">
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="checkBox_5">
             <property name="text">
              <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="checkBox_7">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QDateEdit" name="dateEdit_3"/>
+          </item>
+          <item row="7" column="2">
+           <widget class="QDateEdit" name="dateEdit_4"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Место создания:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="lineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Название:</string>
             </property>
            </widget>
           </item>
@@ -179,21 +147,109 @@
             </item>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox">
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="checkBox_2">
             <property name="text">
              <string/>
             </property>
-            <property name="checked">
-             <bool>false</bool>
-            </property>
            </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
           <item row="5" column="2">
            <widget class="QLineEdit" name="lineEdit_4"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Год создания (до):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="checkBox_6">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Примечание:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Дата поступления (от):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0" colspan="3">
+           <widget class="QTableWidget" name="tableWidget">
+            <column>
+             <property name="text">
+              <string>Id</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Название</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Имя автора</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Тип</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Стиль</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Год создания</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Место создания</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Дата поступления</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Как попал</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Место демонстрации</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Примечание</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </widget>

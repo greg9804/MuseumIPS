@@ -76,16 +76,34 @@ class MainWidget(QtWidgets.QMainWindow):
             params["datein_begin"] = self.ui.dateEdit_3.text()
         if (self.cb7.checkState()):
             params["datein_end"] = self.ui.dateEdit_4.text()
-        searcher = Search(params, self.coll)
-        searcher.start()
+        searcher = Search(params, self.coll.Exponats)
+        result = searcher.start()
+        self.updateTableWidget(result)
+
+    def updateTableWidget(self, lst):
+        table = self.ui.tableWidget
+        table.setRowCount(len(lst))
+        row = 0
+        for i in lst:
+            print("!!!", i.name)
+            table.setItem(row, 0, QtWidgets.QTableWidgetItem(str(i.id)))
+            table.setItem(row, 1, QtWidgets.QTableWidgetItem(i.name))
+            table.setItem(row, 2, QtWidgets.QTableWidgetItem(i.autor.fullname))
+            table.setItem(row, 3, QtWidgets.QTableWidgetItem(i.type))
+            table.setItem(row, 4, QtWidgets.QTableWidgetItem(i.style))
+            table.setItem(row, 5, QtWidgets.QTableWidgetItem(str(i.year)))
+            table.setItem(row, 6, QtWidgets.QTableWidgetItem(i.place))
+            table.setItem(row, 7, QtWidgets.QTableWidgetItem(i.date_in.toString("yyyy-MM-dd")))
+            table.setItem(row, 8, QtWidgets.QTableWidgetItem(i.admission))
+            table.setItem(row, 9, QtWidgets.QTableWidgetItem(i.demo))
+            table.setItem(row, 10, QtWidgets.QTableWidgetItem(i.note))
+            row += 1
 
     def clearInputs(self):
         self.ui.lineEdit.setText("")
         self.ui.lineEdit_2.setText("")
         self.ui.comboBox.setCurrentIndex(0)
         date = QDate()
-        self.ui.dateEdit.setDate(date.currentDate())
-        self.ui.dateEdit_2.setDate(date.currentDate())
         self.ui.dateEdit_3.setDate(date.currentDate())
         self.ui.dateEdit_4.setDate(date.currentDate())
         self.cb1.setChecked(False)
