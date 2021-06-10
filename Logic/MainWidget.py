@@ -74,9 +74,6 @@ class MainWidget(QtWidgets.QMainWindow):
         self.ui.lineEdit_3.setValidator(lineEdit3_validator)
         self.ui.lineEdit_4.setValidator(lineEdit4_validator)
 
-
-
-
     def findExponat(self):
         params = {}
         c = 0
