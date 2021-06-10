@@ -1,7 +1,5 @@
-import PySide6
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import QDate, QRegularExpression
-from PySide6.QtGui import QValidator
 
 from Logic.Collection import Collection
 from Logic.Search import Search
