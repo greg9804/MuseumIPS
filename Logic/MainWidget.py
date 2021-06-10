@@ -1,6 +1,7 @@
 import PySide6
-from PySide6 import QtWidgets, QtCore
-from PySide6.QtCore import QDate
+from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6.QtCore import QDate, QRegularExpression
+from PySide6.QtGui import QValidator
 
 from Logic.Collection import Collection
 from Logic.Search import Search
@@ -20,6 +21,7 @@ class MainWidget(QtWidgets.QMainWindow):
             self.ui.comboBox.addItem(c)
 
         self.enableToggleSearchComponents()
+        self.setupValidators()
 
         self.ui.findPushButton.clicked.connect(self.findExponat)
         self.ui.clearButton1.clicked.connect(self.clearInputs)
@@ -59,26 +61,79 @@ class MainWidget(QtWidgets.QMainWindow):
         self.cb7.stateChanged.connect(lambda state: self.ui.dateEdit_4.setDisabled(self.cb7.checkState() == QtCore.Qt.Unchecked))
         ############################################
 
+    def setupValidators(self):
+        reg_ex_lineEdit = QRegularExpression("^[а-яА-Яa-zA-Z ]+$")
+        reg_ex_lineEdit2 = QRegularExpression("^[а-яА-Яa-zA-Z0-9 ]+$")
+        reg_ex_lineEdit3 = QRegularExpression("^[0-9]{4}")
+        lineEdit_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit, self.ui.lineEdit)
+        lineEdit2_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit2, self.ui.lineEdit_2)
+        lineEdit3_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit3, self.ui.lineEdit_3)
+        lineEdit4_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit3, self.ui.lineEdit_4)
+        self.ui.lineEdit.setValidator(lineEdit_validator)
+        self.ui.lineEdit_2.setValidator(lineEdit2_validator)
+        self.ui.lineEdit_3.setValidator(lineEdit3_validator)
+        self.ui.lineEdit_4.setValidator(lineEdit4_validator)
+
+
+
 
     def findExponat(self):
         params = {}
-        if (self.cb1.checkState()):
-            params["searchLine"] = self.ui.lineEdit.text()
-        if (self.cb2.checkState()):
-            params["cb"] = self.ui.comboBox.currentText()
-        if (self.cb3.checkState()):
-            params["note"] = self.ui.lineEdit_2.text()
-        if (self.cb4.checkState()):
-            params["yearbegin"] = self.ui.lineEdit_3.text()
-        if (self.cb5.checkState()):
-            params["yearend"] = self.ui.lineEdit_4.text()
-        if (self.cb6.checkState()):
+        c = 0
+        if self.cb1.checkState():
+            if self.ui.lineEdit.text() != "":
+                params["searchLine"] = self.ui.lineEdit.text()
+                c += 1
+            else:
+                QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Вы ввели пустую строку!", buttons=QtWidgets.QMessageBox.Cancel)
+                self.clearInputs()
+                return
+        if self.cb2.checkState():
+            if self.ui.comboBox.currentText() == "Не указано":
+                QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Укажите местоположение!", buttons=QtWidgets.QMessageBox.Cancel)
+                self.clearInputs()
+                return
+            else:
+                params["cb"] = self.ui.comboBox.currentText()
+                c += 1
+        if self.cb3.checkState():
+            if self.ui.lineEdit_2.text() != "":
+                params["note"] = self.ui.lineEdit_2.text()
+                c += 1
+            else:
+                QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Вы ввели пустую строку!", buttons=QtWidgets.QMessageBox.Cancel)
+                self.clearInputs()
+                return
+        if self.cb4.checkState():
+            if self.ui.lineEdit_3.text() != "":
+                params["yearbegin"] = self.ui.lineEdit_3.text()
+                c += 1
+            else:
+                QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Вы ввели пустую строку!", buttons=QtWidgets.QMessageBox.Cancel)
+                self.clearInputs()
+                return
+        if self.cb5.checkState():
+            if self.ui.lineEdit_4.text() != "":
+                params["yearend"] = self.ui.lineEdit_4.text()
+                c += 1
+            else:
+                QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Вы ввели пустую строку!", buttons=QtWidgets.QMessageBox.Cancel)
+                self.clearInputs()
+                return
+        if self.cb6.checkState():
             params["datein_begin"] = self.ui.dateEdit_3.text()
-        if (self.cb7.checkState()):
+            c += 1
+        if self.cb7.checkState():
             params["datein_end"] = self.ui.dateEdit_4.text()
-        searcher = Search(params, self.coll.Exponats)
-        result = searcher.start()
-        self.updateTableWidget(result)
+            c += 1
+        if c != 0:
+            searcher = Search(params, self.coll.Exponats)
+            result = searcher.start()
+            self.updateTableWidget(result)
+        elif c == 0:
+            QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Нет данных для поиска!", buttons=QtWidgets.QMessageBox.Cancel)
+            self.clearInputs()
+            return
 
     def updateTableWidget(self, lst):
         table = self.ui.tableWidget
