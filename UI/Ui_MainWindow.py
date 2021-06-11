@@ -188,11 +188,78 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tableWidget, 9, 0, 1, 3)
 
         self.tabWidget.addTab(self.searchTab, "")
-        self.diagrammaTab = QWidget()
-        self.diagrammaTab.setObjectName(u"diagrammaTab")
-        self.tabWidget.addTab(self.diagrammaTab, "")
+        self.diagrammTab = QWidget()
+        self.diagrammTab.setObjectName(u"diagrammTab")
+        self.verticalLayoutWidget_2 = QWidget(self.diagrammTab)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 30, 831, 461))
+        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.pushButtonDiag = QPushButton(self.diagrammTab)
+        self.pushButtonDiag.setObjectName(u"pushButtonDiag")
+        self.pushButtonDiag.setGeometry(QRect(10, 0, 831, 23))
+        self.tabWidget.addTab(self.diagrammTab, "")
         self.statTab = QWidget()
         self.statTab.setObjectName(u"statTab")
+        self.gridLayoutWidget_2 = QWidget(self.statTab)
+        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
+        self.gridLayoutWidget_2.setGeometry(QRect(0, 10, 851, 491))
+        self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.radioButton_2 = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_2.setObjectName(u"radioButton_2")
+
+        self.gridLayout_2.addWidget(self.radioButton_2, 3, 0, 1, 1)
+
+        self.radioButton_4 = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_4.setObjectName(u"radioButton_4")
+
+        self.gridLayout_2.addWidget(self.radioButton_4, 5, 0, 1, 1)
+
+        self.radioButton_3 = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_3.setObjectName(u"radioButton_3")
+
+        self.gridLayout_2.addWidget(self.radioButton_3, 4, 0, 1, 1)
+
+        self.radioButton_6 = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_6.setObjectName(u"radioButton_6")
+
+        self.gridLayout_2.addWidget(self.radioButton_6, 7, 0, 1, 1)
+
+        self.radioButton_5 = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_5.setObjectName(u"radioButton_5")
+
+        self.gridLayout_2.addWidget(self.radioButton_5, 6, 0, 1, 1)
+
+        self.pushButtonStat = QPushButton(self.gridLayoutWidget_2)
+        self.pushButtonStat.setObjectName(u"pushButtonStat")
+
+        self.gridLayout_2.addWidget(self.pushButtonStat, 1, 0, 1, 1)
+
+        self.label_9 = QLabel(self.gridLayoutWidget_2)
+        self.label_9.setObjectName(u"label_9")
+        font = QFont()
+        font.setPointSize(14)
+        self.label_9.setFont(font)
+        self.label_9.setStyleSheet(u"QLabel {\n"
+"	color: rgb(9, 6, 103);\n"
+"}")
+        self.label_9.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.label_9, 0, 0, 1, 1)
+
+        self.radioButton = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton.setObjectName(u"radioButton")
+
+        self.gridLayout_2.addWidget(self.radioButton, 2, 0, 1, 1)
+
+        self.listWidget = QListWidget(self.gridLayoutWidget_2)
+        self.listWidget.setObjectName(u"listWidget")
+
+        self.gridLayout_2.addWidget(self.listWidget, 8, 0, 1, 1)
+
         self.tabWidget.addTab(self.statTab, "")
         self.expoTab = QWidget()
         self.expoTab.setObjectName(u"expoTab")
@@ -210,7 +277,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -260,7 +327,16 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem10 = self.tableWidget.horizontalHeaderItem(10)
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.searchTab), QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0438\u0441\u043a \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.diagrammaTab), QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u044b", None))
+        self.pushButtonDiag.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.diagrammTab), QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u044b", None))
+        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0442\u0438\u043f\u0443", None))
+        self.radioButton_4.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0433\u043e\u0434\u0443 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f", None))
+        self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0441\u0442\u0438\u043b\u044e", None))
+        self.radioButton_6.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u043c\u0435\u0441\u0442\u0443 \u0434\u0435\u043c\u043e\u043d\u0441\u0442\u0440\u0430\u0446\u0438\u0438/\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f", None))
+        self.radioButton_5.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0441\u043f\u043e\u0441\u043e\u0431\u0443 \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0432 \u043c\u0443\u0437\u0435\u0439", None))
+        self.pushButtonStat.setText(QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u044e \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0443 \u0432 \u0444\u0430\u0439\u043b", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u043f\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u043c \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u044f\u043c", None))
+        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0432\u0435\u0441\u0442\u0438 \u043f\u043e \u0430\u0432\u0442\u043e\u0440\u0430\u043c", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.statTab), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.expoTab), QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442/\u0438\u043c\u043f\u043e\u0440\u0442 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.editTab), QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0411\u0414", None))

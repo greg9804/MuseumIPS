@@ -1,8 +1,13 @@
+import sys
+
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import QDate, QRegularExpression
+from PySide6.QtWidgets import QButtonGroup, QFileDialog
 
 from Logic.Collection import Collection
+from Logic.Diagramm import Diagramm
 from Logic.Search import Search
+from Logic.Statistics import Statistics
 from UI.Ui_MainWindow import Ui_MainWindow
 
 
@@ -25,6 +30,60 @@ class MainWidget(QtWidgets.QMainWindow):
         self.ui.clearButton1.clicked.connect(self.clearInputs)
 
         #НАСТРОЙКИ ДИАГРАММЫ
+        self.ui.pushButtonDiag.clicked.connect(self.createDiagramm)
+
+        #НАСТРОЙКИ СТАТИСТИКИ
+        self.ui.tabWidget.currentChanged.connect(self.whichTabIsSelected)
+
+
+    def whichTabIsSelected(self):
+        current_index = self.ui.tabWidget.currentIndex()
+        print(current_index, "is curindex")
+        if current_index == 2:
+            self.createStatistics()
+
+
+    def createStatistics(self):
+        self.radios = QButtonGroup()
+        self.radios.addButton(self.ui.radioButton)
+        self.radios.addButton(self.ui.radioButton_2)
+        self.radios.addButton(self.ui.radioButton_3)
+        self.radios.addButton(self.ui.radioButton_4)
+        self.radios.addButton(self.ui.radioButton_5)
+        self.radios.addButton(self.ui.radioButton_6)
+        self.radios.buttonClicked.connect(self.buildByGroup)
+        self.ui.pushButtonStat.clicked.connect(self.buildToFile)
+
+
+    def buildByGroup(self):
+        id_radio = self.radios.checkedId()
+        s = Statistics(self.coll)
+        result = s.build(id_radio)
+        self.ui.listWidget.clear()
+        for r in result:
+            self.ui.listWidget.addItem(str(r))
+
+    def buildToFile(self):
+        filename, ok = QFileDialog.getSaveFileName(self,
+                                                   "Сохранить файл",
+                                                   ".",
+                                                   "All Files(*.*)")
+        print(filename, "!", ok)
+        default_out = sys.stdout
+        outfile = open(filename, 'w')
+        sys.stdout = outfile
+
+        s = Statistics(self.coll)
+        result = s.buildToFile()
+        for r in result:
+            print(r)
+
+        sys.stdout = default_out
+        outfile.close()
+
+    def createDiagramm(self):
+        d = Diagramm(self, self.ui.verticalLayout_2, self.coll)
+        d.render()
 
 
     def enableToggleSearchComponents(self):
