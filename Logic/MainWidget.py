@@ -61,7 +61,7 @@ class MainWidget(QtWidgets.QMainWindow):
         result = s.build(id_radio)
         self.ui.listWidget.clear()
         for r in result:
-            self.ui.listWidget.addItem(str(r))
+            self.ui.listWidget.addItem("%s : %d" % (r[0], r[1]))
 
     def buildToFile(self):
         filename, ok = QFileDialog.getSaveFileName(self,
@@ -76,7 +76,7 @@ class MainWidget(QtWidgets.QMainWindow):
         s = Statistics(self.coll)
         result = s.buildToFile()
         for r in result:
-            print(r)
+            print("%s : %d" % (r[0], r[1]))
 
         sys.stdout = default_out
         outfile.close()
