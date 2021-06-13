@@ -8,6 +8,7 @@ from Logic.Collection import Collection
 from Logic.Diagramm import Diagramm
 from Logic.Search import Search
 from Logic.Statistics import Statistics
+from Logic.WorkExpo import WorkExpo
 from UI.Ui_MainWindow import Ui_MainWindow
 
 
@@ -35,6 +36,35 @@ class MainWidget(QtWidgets.QMainWindow):
         #НАСТРОЙКИ СТАТИСТИКИ
         self.ui.tabWidget.currentChanged.connect(self.whichTabIsSelected)
 
+        #НАСТРОЙКИ ЭКСПОРТА/ИМПОРТА
+        self.ui.pushButtonClr2.clicked.connect(self.clr2)
+        self.ui.pushButtonExport.clicked.connect(self.startExport)
+        self.ui.pushButtonImport.clicked.connect(self.startImport)
+
+    def startImport(self):
+        worker = WorkExpo(self, self.coll)
+        worker.import_from_file()
+
+
+    def startExport(self):
+        ids = self.ui.lineEdit_5.text()
+        if (ids == ""):
+            QtWidgets.QMessageBox.warning(self, "Некорректный ввод данных", "Вы не ввели id экспонатов!",
+                                          buttons=QtWidgets.QMessageBox.Cancel)
+            return
+        worker = WorkExpo(self, self.coll)
+        if ids.find(",") != -1:
+            ids = ids.split(",")
+            worker.export(ids, 1)
+        elif ids.find("-") != -1:
+            ids = ids.split("-")
+            worker.export(ids, 2)
+        else:
+            worker.export(ids, 3)
+        self.clr2()
+
+    def clr2(self):
+        self.ui.lineEdit_5.setText("")
 
     def whichTabIsSelected(self):
         current_index = self.ui.tabWidget.currentIndex()
@@ -122,14 +152,18 @@ class MainWidget(QtWidgets.QMainWindow):
         reg_ex_lineEdit = QRegularExpression("^[а-яА-Яa-zA-Z ]+$")
         reg_ex_lineEdit2 = QRegularExpression("^[а-яА-Яa-zA-Z0-9 ]+$")
         reg_ex_lineEdit3 = QRegularExpression("^[0-9]{4}")
+        #для экспорта экспонатов
+        rex_ex_lineEdit5 = QRegularExpression("^([0-9]{1,4})|(([0-9]{1,4},)+)|([0-9]{1,4}-[0-9]{1,4})$")
         lineEdit_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit, self.ui.lineEdit)
         lineEdit2_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit2, self.ui.lineEdit_2)
         lineEdit3_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit3, self.ui.lineEdit_3)
         lineEdit4_validator = QtGui.QRegularExpressionValidator(reg_ex_lineEdit3, self.ui.lineEdit_4)
+        lineEdit5_validator = QtGui.QRegularExpressionValidator(rex_ex_lineEdit5, self.ui.lineEdit_5)
         self.ui.lineEdit.setValidator(lineEdit_validator)
         self.ui.lineEdit_2.setValidator(lineEdit2_validator)
         self.ui.lineEdit_3.setValidator(lineEdit3_validator)
         self.ui.lineEdit_4.setValidator(lineEdit4_validator)
+        self.ui.lineEdit_5.setValidator(lineEdit5_validator)
 
     def findExponat(self):
         params = {}

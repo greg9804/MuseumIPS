@@ -29,3 +29,6 @@ class Exponat:
 
     def __str__(self):
         return f"{self.id} {self.name} //{self.autor.fullname}// {self.type} {self.style} {self.year} {self.place} {self.date_in} {self.admission} {self.demo} {self.note}"
+
+    def getStringToSaveForFile(self):
+        return f"{self.id} {self.name} //{self.autor}// {self.type} {self.style} {self.year} {self.place} {self.date_in.toString('yyyy-MM-dd')} {self.admission} {self.demo} {self.note}"

@@ -263,6 +263,42 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.statTab, "")
         self.expoTab = QWidget()
         self.expoTab.setObjectName(u"expoTab")
+        self.gridLayoutWidget_3 = QWidget(self.expoTab)
+        self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 10, 831, 481))
+        self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.lineEdit_5 = QLineEdit(self.gridLayoutWidget_3)
+        self.lineEdit_5.setObjectName(u"lineEdit_5")
+
+        self.gridLayout_3.addWidget(self.lineEdit_5, 0, 1, 1, 1)
+
+        self.label_10 = QLabel(self.gridLayoutWidget_3)
+        self.label_10.setObjectName(u"label_10")
+
+        self.gridLayout_3.addWidget(self.label_10, 0, 0, 1, 1)
+
+        self.pushButtonClr2 = QPushButton(self.gridLayoutWidget_3)
+        self.pushButtonClr2.setObjectName(u"pushButtonClr2")
+
+        self.gridLayout_3.addWidget(self.pushButtonClr2, 1, 1, 1, 1)
+
+        self.pushButtonExport = QPushButton(self.gridLayoutWidget_3)
+        self.pushButtonExport.setObjectName(u"pushButtonExport")
+
+        self.gridLayout_3.addWidget(self.pushButtonExport, 1, 0, 1, 1)
+
+        self.label_11 = QLabel(self.gridLayoutWidget_3)
+        self.label_11.setObjectName(u"label_11")
+
+        self.gridLayout_3.addWidget(self.label_11, 2, 0, 1, 1)
+
+        self.pushButtonImport = QPushButton(self.gridLayoutWidget_3)
+        self.pushButtonImport.setObjectName(u"pushButtonImport")
+
+        self.gridLayout_3.addWidget(self.pushButtonImport, 2, 1, 1, 1)
+
         self.tabWidget.addTab(self.expoTab, "")
         self.editTab = QWidget()
         self.editTab.setObjectName(u"editTab")
@@ -277,7 +313,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -338,6 +374,11 @@ class Ui_MainWindow(object):
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u043f\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u043c \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u044f\u043c", None))
         self.radioButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0432\u0435\u0441\u0442\u0438 \u043f\u043e \u0430\u0432\u0442\u043e\u0440\u0430\u043c", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.statTab), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 id \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u0434\u043b\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0430 \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443, \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e \u0438\u043b\u0438 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d \u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u0444\u0438\u0441:", None))
+        self.pushButtonClr2.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0431\u0440\u043e\u0441 \u043f\u043e\u043b\u044f", None))
+        self.pushButtonExport.setText(QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043b \u0434\u043b\u044f \u0438\u043c\u043f\u043e\u0440\u0442\u0430 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432:", None))
+        self.pushButtonImport.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0444\u0430\u0439\u043b \u0438 \u0438\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u044b", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.expoTab), QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442/\u0438\u043c\u043f\u043e\u0440\u0442 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.editTab), QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0411\u0414", None))
     # retranslateUi

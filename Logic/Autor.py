@@ -17,6 +17,6 @@ class Autor:
         self.country = country
 
     def __str__(self):
-        return f"{self.id} {self.fullname} {self.birthday} {self.deathday} {self.years} {self.country}"
+        return f"{self.id} {self.fullname} {self.birthday.toString('yyyy-MM-dd')} {self.deathday.toString('yyyy-MM-dd')} {self.years} {self.country}"
 
 
