@@ -43,7 +43,9 @@ class MainWidget(QtWidgets.QMainWindow):
 
     def startImport(self):
         worker = WorkExpo(self, self.coll)
-        worker.import_from_file()
+        count = worker.import_from_file()
+        if count > 0:
+            self.coll.load()
 
 
     def startExport(self):

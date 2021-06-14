@@ -2,6 +2,9 @@ import sqlite3
 import sys
 import traceback
 
+from PySide6 import QtWidgets
+from PySide6.QtWidgets import QMessageBox
+
 
 class DB:
     def getTableWithName(self, tablename):
@@ -24,3 +27,70 @@ class DB:
             print('SQLite traceback: ')
             exc_type, exc_value, exc_tb = sys.exc_info()
             print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
+    def insertExpo(self, expo_s):
+        try:
+            connection = sqlite3.connect("DB/museum.db")
+            cur = connection.cursor()
+
+            expo = expo_s.split(",")
+            id = expo[0]
+            name = expo[1]
+            autor = expo[2]
+            type = expo[3]
+            style = expo[4]
+            year = expo[5]
+            place = expo[6]
+            date_in = expo[7]
+            adm = expo[8]
+            demo = expo[9]
+            note = expo[10]
+
+            query = "INSERT INTO exponats VALUES ({}, '{}', {}, {}, {}, {}, '{}', date('{}'), {}, {}, '{}')".format(id, name, autor, type, style, year, place, date_in, adm, demo, note)
+            print(query, file=sys.stderr)
+            cur.execute(query)
+
+            connection.commit()
+            connection.close()
+            return True
+
+        except sqlite3.Error as er:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            print(traceback.format_exception(exc_type, exc_value, exc_tb))
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Не верный файл! Запрос не выполнен!")
+            msg.setInformativeText('SQLite error: %s' % (' '.join(er.args)))
+            msg.setWindowTitle("Error")
+            msg.exec_()
+            return False
+
+    """
+    def insertAutor(self, autor_s):
+        try:
+            connection = sqlite3.connect("DB/museum.db")
+            cur = connection.cursor()
+            autor = autor_s.split(",")
+            id = autor[0]
+            fullname = autor[1]
+            birthday = autor[2]
+            deathday = autor[3]
+            years = autor[4]
+            country = autor[5]
+
+            query = 'INSERT INTO exponats VALUES ({}, {}, date({}), date({}), {}, {})'.format(id, fullname, birthday, deathday, years, country)
+            cur.execute(query)
+
+            connection.commit()
+            connection.close()
+
+        except sqlite3.Error as er:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            print(traceback.format_exception(exc_type, exc_value, exc_tb))
+    """

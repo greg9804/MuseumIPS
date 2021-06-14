@@ -1,14 +1,17 @@
 import sys
 
 from PySide6 import QtWidgets
-from PySide6.QtWidgets import QFileDialog
+from PySide6.QtWidgets import QFileDialog, QMessageBox
+
+from DB.db import DB
 
 
 class WorkExpo:
-    def __init__(self, window, coll=None):
+    def __init__(self, window, coll=None, db=None):
         self.coll = coll
         self.autors = coll.Autors
         self.window = window
+        self.db = db
 
     def export(self, ids, mode):
         filename, ok = QFileDialog.getSaveFileName(self.window,
@@ -18,7 +21,7 @@ class WorkExpo:
         count = 0
         if (ok):
             default_out = sys.stdout
-            outfile = open(filename, 'w')
+            outfile = open(filename, 'w', encoding='utf-8')
             sys.stdout = outfile
         else:
             print("file was not selected!")
@@ -27,7 +30,7 @@ class WorkExpo:
             ids = [int(id) for id in ids]
             for e in self.coll.Exponats:
                 if e.id in ids:
-                    print(e.getStringToSaveForFile())
+                    print(e.getStringToSaveForFile(self.coll))
                     print(e, file=sys.stderr)
                     count += 1
             if count != len(ids):
@@ -40,7 +43,7 @@ class WorkExpo:
             for id in range(startid, endid+1):
                 for e in self.coll.Exponats:
                     if int(e.id) == id:
-                        print(e.getStringToSaveForFile())
+                        print(e.getStringToSaveForFile(self.coll))
                         print(e, file=sys.stderr)
                         count += 1
             if count != endid - startid + 1:
@@ -50,7 +53,7 @@ class WorkExpo:
         elif mode == 3:     #xx
             for e in self.coll.Exponats:
                 if e.id == int(ids):
-                    print(e.getStringToSaveForFile())
+                    print(e.getStringToSaveForFile(self.coll))
                     print(e, file=sys.stderr)
                     count += 1
             if count == 0:
@@ -66,34 +69,50 @@ class WorkExpo:
         outfile.close()
 
     def import_from_file(self):
+        '''Вернет количество успешно импортированных экспонатов'''
         filename, filetype = QFileDialog.getOpenFileName(self.window,
                                                          "Выбрать файл",
                                                          ".",
                                                          "Text Files(*.txt); ;All Files(*)")
-        f = open(filename, 'r')
-        strips = [line.strip() for line in f]
-        f.close()
+        try:
+            f = open(filename, 'r', encoding='utf-8')
+            db = DB()
+            strips = [line.strip() for line in f]
+            f.close()
+        except FileNotFoundError:
+            print('No such file or directory')
+            return 0
 
+        succes = False
+        count = 0
         for s in strips:
             start_autor = s.find("//")
             end_autor = s.rfind("//")
-            autor_s = s[start_autor+2:end_autor]
-            autor_id = autor_s[:autor_s.find(" ")]
+            autor_id = s[start_autor+2:end_autor]
             #подготовка строки к запросу
-            autorsforremove = s[start_autor:end_autor+2]
-            expo_s = s.replace(autorsforremove, autor_id)
-            print(expo_s)
-            if self.is_id_in_autors(autor_id):
-                pass
-                #загрузить экспонат в бд
+            expo_s = s.replace("//", "")
+            print(autor_id)
+            print(expo_s, '\n')
+
+            succes = db.insertExpo(expo_s)
+            if not succes:
+                break
             else:
-                pass
-                #загрузить автора в бд
-                #загрузить экспонат в бд
+                count += 1
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setInformativeText('Успешно импортировано экспонатов: %d' % (count))
+        msg.setWindowTitle("Импорт")
+        msg.exec_()
+
+        return count
 
 
+    '''
     def is_id_in_autors(self, id):
         for a in self.autors:
             if id == a.id:
                 return True
         return False
+    '''

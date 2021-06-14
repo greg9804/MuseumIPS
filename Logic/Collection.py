@@ -50,6 +50,7 @@ class Collection:
                 return a
 
     def parseAutors(self, tuples):
+        self.Autors.clear()
         for t in tuples:
             id = t[0]
             fullname = t[1]
@@ -70,6 +71,7 @@ class Collection:
             self.Autors.append(Autor(id, fullname, birthday, deathday, years, country))
 
     def parseExponats(self, tuples):
+        self.Exponats.clear()
         for t in tuples:
             id = t[0]
             name = t[1]
@@ -90,6 +92,7 @@ class Collection:
             self.Exponats.append(Exponat(id, name, avtor, type, style, year, place, datein, admission, demo, note))
 
     def createCollection(self):
+        self.collection.clear()
         for e in self.Exponats:
             autor = e.autor
             if autor in self.collection:
