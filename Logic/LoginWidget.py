@@ -12,16 +12,19 @@ class LoginWidget(QtWidgets.QWidget):
         self.ui.userLoginBtn.clicked.connect(self.show_main_window)
         self.ui.workerLoginBtn.clicked.connect(self.auth_worker)
 
-    def show_main_window(self):
+    def show_main_window(self, withKey=False):
         self.hide()
         #QtWidgets.QMessageBox.information(self, "Вход в систему", "Здравствуйте, вход выполнен!", buttons=QtWidgets.QMessageBox.Ok)
-        self.main_window = MainWidget()
+        if withKey:
+            self.main_window = MainWidget(withKey=True)
+        else:
+            self.main_window = MainWidget()
         self.main_window.show()
 
     def auth_worker(self):
         key,ok = QtWidgets.QInputDialog.getText(self, "Вход в систему", "Введите ваш ключ")
 
         if ok and key == "123":
-            self.show_main_window()
+            self.show_main_window(True)
 
 

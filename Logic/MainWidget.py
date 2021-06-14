@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QButtonGroup, QFileDialog
 
 from Logic.Collection import Collection
 from Logic.Diagramm import Diagramm
+from Logic.EditWindow import EditWindow
 from Logic.Search import Search
 from Logic.Statistics import Statistics
 from Logic.WorkExpo import WorkExpo
@@ -13,12 +14,18 @@ from UI.Ui_MainWindow import Ui_MainWindow
 
 
 class MainWidget(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, withKey=None):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.coll = Collection()
         self.coll.load()
+        self.withKey = withKey
+
+        if not self.withKey:
+            #self.ui.expoTab.setDisabled(True)
+            #self.ui.editTab.setDisabled(True)
+            pass
 
         #НАСТРОЙКИ ПОИСКА
         for c in self.coll.getCountriesForCB():
@@ -40,6 +47,13 @@ class MainWidget(QtWidgets.QMainWindow):
         self.ui.pushButtonClr2.clicked.connect(self.clr2)
         self.ui.pushButtonExport.clicked.connect(self.startExport)
         self.ui.pushButtonImport.clicked.connect(self.startImport)
+
+        #НАСТРОЙКИ РЕДАКТИРОВАНИЯ БД
+        self.ui.pushButtonEdit.clicked.connect(self.startEdit)
+
+    def startEdit(self):
+        self.edit_window = EditWindow()
+        self.edit_window.show()
 
     def startImport(self):
         worker = WorkExpo(self, self.coll)

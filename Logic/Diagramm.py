@@ -1,5 +1,4 @@
 from PySide6 import QtCharts, QtCore
-import sys, random
 from PySide6.QtCharts import QBarSet, QBarSeries, QChart, QBarCategoryAxis, QValueAxis, QChartView
 
 

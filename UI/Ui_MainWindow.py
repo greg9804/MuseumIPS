@@ -302,6 +302,9 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.expoTab, "")
         self.editTab = QWidget()
         self.editTab.setObjectName(u"editTab")
+        self.pushButtonEdit = QPushButton(self.editTab)
+        self.pushButtonEdit.setObjectName(u"pushButtonEdit")
+        self.pushButtonEdit.setGeometry(QRect(40, 40, 231, 81))
         self.tabWidget.addTab(self.editTab, "")
 
         self.verticalLayout.addWidget(self.tabWidget)
@@ -313,7 +316,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -380,6 +383,7 @@ class Ui_MainWindow(object):
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043b \u0434\u043b\u044f \u0438\u043c\u043f\u043e\u0440\u0442\u0430 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432:", None))
         self.pushButtonImport.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0444\u0430\u0439\u043b \u0438 \u0438\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u044b", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.expoTab), QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442/\u0438\u043c\u043f\u043e\u0440\u0442 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432", None))
+        self.pushButtonEdit.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043e\u043a\u043d\u043e \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440\u0430", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.editTab), QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0411\u0414", None))
     # retranslateUi
 

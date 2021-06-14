@@ -27,7 +27,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="searchTab">
         <attribute name="title">
@@ -431,6 +431,19 @@
         <attribute name="title">
          <string>Редактирование БД</string>
         </attribute>
+        <widget class="QPushButton" name="pushButtonEdit">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>40</y>
+           <width>231</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Запустить окно редактора</string>
+         </property>
+        </widget>
        </widget>
       </widget>
      </item>
