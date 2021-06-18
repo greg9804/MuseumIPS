@@ -23,9 +23,8 @@ class MainWidget(QtWidgets.QMainWindow):
         self.withKey = withKey
 
         if not self.withKey:
-            #self.ui.expoTab.setDisabled(True)
-            #self.ui.editTab.setDisabled(True)
-            pass
+            self.ui.expoTab.setDisabled(True)
+            self.ui.editTab.setDisabled(True)
 
         #НАСТРОЙКИ ПОИСКА
         for c in self.coll.getCountriesForCB():
@@ -51,8 +50,12 @@ class MainWidget(QtWidgets.QMainWindow):
         #НАСТРОЙКИ РЕДАКТИРОВАНИЯ БД
         self.ui.pushButtonEdit.clicked.connect(self.startEdit)
 
+    def reloadCollection(self):
+        print('reloading...')
+        self.coll.load()
+
     def startEdit(self):
-        self.edit_window = EditWindow()
+        self.edit_window = EditWindow(self)
         self.edit_window.show()
 
     def startImport(self):

@@ -1,12 +1,12 @@
+import PySide6
 from PySide6 import QtWidgets, QtSql, QtCore
 from PySide6.QtWidgets import QVBoxLayout, QComboBox
 
 
 class EditWindow(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, last, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-
-        #ДОБАВИТЬ КОД ПО УЛУЧШЕНИЮ СТИЛЯ И ДЕЙСТВИЕ ПРИ ЗАКРЫТИИ
+        self.last = last
 
         # Connect to database
         self.db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
@@ -38,6 +38,11 @@ class EditWindow(QtWidgets.QWidget):
         self.layout.addWidget(self.table_names)
         self.layout.addWidget(self.insert)
         self.layout.addWidget(self.delete)
+
+    def closeEvent(self, event:PySide6.QtGui.QCloseEvent) -> None:
+        self.last.reloadCollection()
+        event.accept()
+
 
     def deleteRow(self):
         index = self.table_view.currentIndex()
