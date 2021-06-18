@@ -6,19 +6,59 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>423</width>
+    <height>304</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Tahoma</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Вход в систему</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>iconn.png</normaloff>iconn.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+	padding: 5px;
+	font: 14pt &quot;Tahoma&quot;;
+    border: 2px solid rgb(170, 13, 47);
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: rgb(170, 13, 47);
+	color: rgb(0, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+	color: rgb(255, 85, 0);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>381</width>
+     <width>411</width>
      <height>281</height>
     </rect>
    </property>
@@ -32,6 +72,15 @@
     </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="workerLoginBtn">
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Как Работник музея</string>
       </property>
@@ -39,6 +88,17 @@
     </item>
     <item row="0" column="0" colspan="2">
      <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+	color: rgb(32, 12, 255);
+}</string>
+      </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Добро пожаловать!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Как войти в систему?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>

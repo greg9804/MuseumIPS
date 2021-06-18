@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>882</width>
-    <height>566</height>
+    <width>943</width>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ИПС учета коллекции музея</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background: rgb(255, 244, 201);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -19,13 +28,140 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>861</width>
-      <height>531</height>
+      <width>921</width>
+      <height>551</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <family>Tahoma</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid rgb(65, 65, 64);
+    position: absolute;
+    top: -0.5em;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.130682 rgba(120, 54, 50, 255), stop:0.715909 rgba(138, 70, 97, 255), stop:1 rgba(0, 70, 235, 255));
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 10px;
+	color: rgb(98, 174, 107);
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C2C7CB; /* same as pane color */
+}
+
+QLabel {
+	color: rgb(9, 69, 121); 
+	font: 12pt &quot;Tahoma&quot;;
+}
+
+QPushButton {
+	
+	font: 14pt &quot;Tahoma&quot;;
+    border: 2px solid rgb(170, 13, 47);
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: rgb(170, 13, 47);
+	color: rgb(0, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+	color: rgb(255, 85, 0);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}
+
+QComboBox {
+    border: 1px solid  rgb(0, 255, 255);
+    border-radius: 1px;
+    padding: 5px 15px 5px 3px;
+    min-width: 6em;
+	font: 12pt &quot;Tahoma&quot;;
+	color: rgb(56, 112, 0);
+}
+
+QComboBox:editable {
+    background: white;
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+/* QComboBox gets the &quot;on&quot; state when the popup is open */
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,
+                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}</string>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -38,7 +174,7 @@
           <rect>
            <x>10</x>
            <y>20</y>
-           <width>841</width>
+           <width>901</width>
            <height>471</height>
           </rect>
          </property>
@@ -262,9 +398,9 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>30</y>
-           <width>831</width>
-           <height>461</height>
+           <y>50</y>
+           <width>891</width>
+           <height>441</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2"/>
@@ -273,9 +409,9 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>0</y>
-           <width>831</width>
-           <height>23</height>
+           <y>10</y>
+           <width>891</width>
+           <height>31</height>
           </rect>
          </property>
          <property name="text">
@@ -292,7 +428,7 @@
           <rect>
            <x>0</x>
            <y>10</y>
-           <width>851</width>
+           <width>911</width>
            <height>491</height>
           </rect>
          </property>
@@ -343,13 +479,15 @@
            <widget class="QLabel" name="label_9">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <family>Tahoma</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
-	color: rgb(9, 6, 103);
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Количество экспонатов по различным критериям</string>
@@ -381,7 +519,7 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>831</width>
+           <width>908</width>
            <height>481</height>
           </rect>
          </property>
@@ -392,7 +530,8 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string>Введите id экспонатов для экспорта по одному, через запятую или диапазон через дефис:</string>
+             <string>Введите id экспонатов для экспорта по одному,
+через запятую или диапазон через дефис:</string>
             </property>
            </widget>
           </item>
@@ -434,9 +573,9 @@
         <widget class="QPushButton" name="pushButtonEdit">
          <property name="geometry">
           <rect>
-           <x>40</x>
-           <y>40</y>
-           <width>231</width>
+           <x>320</x>
+           <y>200</y>
+           <width>271</width>
            <height>81</height>
           </rect>
          </property>

@@ -17,22 +17,152 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(882, 566)
+        MainWindow.resize(943, 582)
+        icon = QIcon()
+        icon.addFile(u"UI/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet(u"QMainWindow {\n"
+"	background: rgb(255, 244, 201);\n"
+"}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 861, 531))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 921, 551))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.tabWidget = QTabWidget(self.verticalLayoutWidget)
         self.tabWidget.setObjectName(u"tabWidget")
+        font = QFont()
+        font.setFamilies([u"Tahoma"])
+        font.setPointSize(12)
+        self.tabWidget.setFont(font)
+        self.tabWidget.setAutoFillBackground(True)
+        self.tabWidget.setStyleSheet(u"QTabWidget::pane { /* The tab widget frame */\n"
+"    border-top: 2px solid rgb(65, 65, 64);\n"
+"    position: absolute;\n"
+"    top: -0.5em;\n"
+"}\n"
+"\n"
+"QTabWidget::tab-bar {\n"
+"    alignment: center;\n"
+"}\n"
+"\n"
+"/* Style the tab using the tab sub-control. Note that\n"
+"    it reads QTabBar _not_ QTabWidget */\n"
+"QTabBar::tab {\n"
+"	background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.130682 rgba(120, 54, 50, 255), stop:0.715909 rgba(138, 70, 97, 255), stop:1 rgba(0, 70, 235, 255));\n"
+"    border: 2px solid #C4C4C3;\n"
+"    border-bottom-color: #C2C7CB; /* same as the pane color */\n"
+"    border-top-left-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
+"    min-width: 8ex;\n"
+"    padding: 10px;\n"
+"	color: rgb(98, 174, 107);\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected, QTabBar::tab:hover {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,\n"
+"                                stop: 0.5 #e7e7e7, stop:"
+                        " 1.0 #fafafa);\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"    border-color: #9B9B9B;\n"
+"    border-bottom-color: #C2C7CB; /* same as pane color */\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"	color: rgb(9, 69, 121); \n"
+"	font: 12pt \"Tahoma\";\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	\n"
+"	font: 14pt \"Tahoma\";\n"
+"    border: 2px solid rgb(170, 13, 47);\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"    min-width: 80px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(170, 13, 47);\n"
+"	color: rgb(0, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"	color: rgb(255, 85, 0);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* mak"
+                        "e the default button prominent */\n"
+"}\n"
+"\n"
+"QComboBox {\n"
+"    border: 1px solid  rgb(0, 255, 255);\n"
+"    border-radius: 1px;\n"
+"    padding: 5px 15px 5px 3px;\n"
+"    min-width: 6em;\n"
+"	font: 12pt \"Tahoma\";\n"
+"	color: rgb(56, 112, 0);\n"
+"}\n"
+"\n"
+"QComboBox:editable {\n"
+"    background: white;\n"
+"}\n"
+"\n"
+"QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
+"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+"}\n"
+"\n"
+"/* QComboBox gets the \"on\" state when the popup is open */\n"
+"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,\n"
+"                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);\n"
+"}\n"
+"\n"
+"QComboBox:on { /* shift the text when the popup opens */\n"
+"    "
+                        "padding-top: 3px;\n"
+"    padding-left: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid; /* just a single line */\n"
+"    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.searchTab = QWidget()
         self.searchTab.setObjectName(u"searchTab")
         self.gridLayoutWidget = QWidget(self.searchTab)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(10, 20, 841, 471))
+        self.gridLayoutWidget.setGeometry(QRect(10, 20, 901, 471))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -192,19 +322,19 @@ class Ui_MainWindow(object):
         self.diagrammTab.setObjectName(u"diagrammTab")
         self.verticalLayoutWidget_2 = QWidget(self.diagrammTab)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 30, 831, 461))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 50, 891, 441))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.pushButtonDiag = QPushButton(self.diagrammTab)
         self.pushButtonDiag.setObjectName(u"pushButtonDiag")
-        self.pushButtonDiag.setGeometry(QRect(10, 0, 831, 23))
+        self.pushButtonDiag.setGeometry(QRect(10, 10, 891, 31))
         self.tabWidget.addTab(self.diagrammTab, "")
         self.statTab = QWidget()
         self.statTab.setObjectName(u"statTab")
         self.gridLayoutWidget_2 = QWidget(self.statTab)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(0, 10, 851, 491))
+        self.gridLayoutWidget_2.setGeometry(QRect(0, 10, 911, 491))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -240,12 +370,13 @@ class Ui_MainWindow(object):
 
         self.label_9 = QLabel(self.gridLayoutWidget_2)
         self.label_9.setObjectName(u"label_9")
-        font = QFont()
-        font.setPointSize(14)
-        self.label_9.setFont(font)
-        self.label_9.setStyleSheet(u"QLabel {\n"
-"	color: rgb(9, 6, 103);\n"
-"}")
+        font1 = QFont()
+        font1.setFamilies([u"Tahoma"])
+        font1.setPointSize(12)
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.label_9.setFont(font1)
+        self.label_9.setStyleSheet(u"")
         self.label_9.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_2.addWidget(self.label_9, 0, 0, 1, 1)
@@ -265,7 +396,7 @@ class Ui_MainWindow(object):
         self.expoTab.setObjectName(u"expoTab")
         self.gridLayoutWidget_3 = QWidget(self.expoTab)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 10, 831, 481))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 10, 908, 481))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -304,7 +435,7 @@ class Ui_MainWindow(object):
         self.editTab.setObjectName(u"editTab")
         self.pushButtonEdit = QPushButton(self.editTab)
         self.pushButtonEdit.setObjectName(u"pushButtonEdit")
-        self.pushButtonEdit.setGeometry(QRect(40, 40, 231, 81))
+        self.pushButtonEdit.setGeometry(QRect(320, 200, 271, 81))
         self.tabWidget.addTab(self.editTab, "")
 
         self.verticalLayout.addWidget(self.tabWidget)
@@ -377,7 +508,8 @@ class Ui_MainWindow(object):
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u043f\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u043c \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u044f\u043c", None))
         self.radioButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0432\u0435\u0441\u0442\u0438 \u043f\u043e \u0430\u0432\u0442\u043e\u0440\u0430\u043c", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.statTab), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 id \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u0434\u043b\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0430 \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443, \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e \u0438\u043b\u0438 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d \u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u0444\u0438\u0441:", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 id \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432 \u0434\u043b\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0430 \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443,\n"
+"\u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e \u0438\u043b\u0438 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d \u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u0444\u0438\u0441:", None))
         self.pushButtonClr2.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0431\u0440\u043e\u0441 \u043f\u043e\u043b\u044f", None))
         self.pushButtonExport.setText(QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043b \u0434\u043b\u044f \u0438\u043c\u043f\u043e\u0440\u0442\u0430 \u044d\u043a\u0441\u043f\u043e\u043d\u0430\u0442\u043e\u0432:", None))

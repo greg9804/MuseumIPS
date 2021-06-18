@@ -17,10 +17,45 @@ class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         if not LoginWindow.objectName():
             LoginWindow.setObjectName(u"LoginWindow")
-        LoginWindow.resize(400, 300)
+        LoginWindow.resize(423, 304)
+        font = QFont()
+        font.setFamilies([u"Tahoma"])
+        font.setPointSize(14)
+        LoginWindow.setFont(font)
+        icon = QIcon()
+        icon.addFile(u"UI/iconn.png", QSize(), QIcon.Normal, QIcon.Off)
+        LoginWindow.setWindowIcon(icon)
+        LoginWindow.setStyleSheet(u"QPushButton {\n"
+"	padding: 5px;\n"
+"	font: 14pt \"Tahoma\";\n"
+"    border: 2px solid rgb(170, 13, 47);\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"    min-width: 80px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(170, 13, 47);\n"
+"	color: rgb(0, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"	color: rgb(255, 85, 0);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
         self.gridLayoutWidget = QWidget(LoginWindow)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(9, 9, 381, 281))
+        self.gridLayoutWidget.setGeometry(QRect(9, 9, 411, 281))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -31,11 +66,24 @@ class Ui_LoginWindow(object):
 
         self.workerLoginBtn = QPushButton(self.gridLayoutWidget)
         self.workerLoginBtn.setObjectName(u"workerLoginBtn")
+        font1 = QFont()
+        font1.setFamilies([u"Tahoma"])
+        font1.setPointSize(14)
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.workerLoginBtn.setFont(font1)
 
         self.gridLayout.addWidget(self.workerLoginBtn, 1, 1, 1, 1)
 
         self.label = QLabel(self.gridLayoutWidget)
         self.label.setObjectName(u"label")
+        font2 = QFont()
+        font2.setFamilies([u"Tahoma"])
+        font2.setPointSize(16)
+        self.label.setFont(font2)
+        self.label.setStyleSheet(u"QLabel {\n"
+"	color: rgb(32, 12, 255);\n"
+"}")
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setMargin(0)
 

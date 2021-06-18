@@ -14,7 +14,7 @@ class LoginWidget(QtWidgets.QWidget):
 
     def show_main_window(self, withKey=False):
         self.hide()
-        #QtWidgets.QMessageBox.information(self, "Вход в систему", "Здравствуйте, вход выполнен!", buttons=QtWidgets.QMessageBox.Ok)
+        QtWidgets.QMessageBox.information(self, "Вход в систему", "Здравствуйте, вход выполнен!", buttons=QtWidgets.QMessageBox.Ok)
         if withKey:
             self.main_window = MainWidget(withKey=True)
         else:

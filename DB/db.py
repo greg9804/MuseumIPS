@@ -68,29 +68,3 @@ class DB:
             msg.exec_()
             return False
 
-    """
-    def insertAutor(self, autor_s):
-        try:
-            connection = sqlite3.connect("DB/museum.db")
-            cur = connection.cursor()
-            autor = autor_s.split(",")
-            id = autor[0]
-            fullname = autor[1]
-            birthday = autor[2]
-            deathday = autor[3]
-            years = autor[4]
-            country = autor[5]
-
-            query = 'INSERT INTO exponats VALUES ({}, {}, date({}), date({}), {}, {})'.format(id, fullname, birthday, deathday, years, country)
-            cur.execute(query)
-
-            connection.commit()
-            connection.close()
-
-        except sqlite3.Error as er:
-            print('SQLite error: %s' % (' '.join(er.args)))
-            print("Exception class is: ", er.__class__)
-            print('SQLite traceback: ')
-            exc_type, exc_value, exc_tb = sys.exc_info()
-            print(traceback.format_exception(exc_type, exc_value, exc_tb))
-    """
